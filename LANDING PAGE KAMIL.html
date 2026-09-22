@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SEMPURNAIN AJA - PERSONAL LINKS</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ==========================================
+           1. VARIABLES & RESET CSS
+           ========================================== */
+        :root {
+            --bg-deep: #080d1a;
+            --navy-dark: #0f1f4b;
+            --blue-primary: #2d6df6;
+            --blue-soft: #79a9ff;
+            --glass-white: rgba(255, 255, 255, 0.07);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --text-main: #ffffff;
+            --text-muted: #a0aec0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg-deep); 
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto; /* Memastikan bisa di-scroll */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080d1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ==========================================
+           2. MOBILE CONTAINER & LIQUID BACKGROUND
+           ========================================== */
+        .app-viewport {
+            width: 100%;
+            max-width: 430px;
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+            background: #080d1a;
+        }
+
+        @media (min-height: 700px) and (min-width: 431px) {
+            .app-viewport {
+                min-height: 880px;
+                max-height: 92vh;
+                border-radius: 36px;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                overflow-y: auto; /* Memungkinkan scroll di dalam frame desktop */
+            }
+        }
+
+        /* --- LIQUID BACKGROUND BLOBS --- */
+        .liquid-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1; overflow: hidden; pointer-events: none;
+        }
+        .blob {
+            position: absolute; border-radius: 50%; filter: blur(70px);
+            opacity: 0.45; animation: move 12s infinite alternate ease-in-out;
+        }
+        .blob-1 { width: 320px; height: 320px; background: #0f1f4b; top: -5%; left: -10%; }
+        .blob-2 { width: 280px; height: 280px; background: #2d6df6; bottom: -5%; right: -10%; animation-delay: -4s; }
+        .blob-3 { width: 220px; height: 220px; background: #1a365d; top: 40%; left: 25%; animation-delay: -2s; }
+        
+        @keyframes move {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(30px, 20px) scale(1.1); }
+        }
+
+        /* ==========================================
+           3. CONTENT CONTAINER & HEADER
+           ========================================== */
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            padding: 40px 22px 40px 22px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 105px;
+            height: 105px;
+            margin: 0 auto 16px auto;
+        }
+
+        .profile-avatar {
+            width: 100%; height: 100%;
+            border-radius: 50%; object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            position: relative; z-index: 2;
+        }
+
+        .profile-glow {
+            position: absolute; inset: -4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-soft));
+            z-index: 1; filter: blur(8px);
+            animation: pulseGlow 3s infinite alternate;
+        }
+
+        .badge-verified {
+            position: absolute; bottom: 2px; right: 2px;
+            background: var(--blue-primary); color: #fff;
+            width: 24px; height: 24px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; border: 2px solid var(--bg-deep); z-index: 3;
+        }
+
+        /* SHINING TITLE EFFECT */
+        .title-glow {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            line-height: 1.2;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(
+                120deg, 
+                #ffffff 30%, 
+                #79a9ff 50%, 
+                #ffffff 70%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+            margin-bottom: 12px;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Speech / Welcome Bubble */
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 12px 16px;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        }
+
+        .welcome-text {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            line-height: 1.4;
+            min-height: 36px;
+        }
+
+        .cursor {
+            display: inline-block; width: 2px; height: 13px;
+            background-color: var(--blue-soft); margin-left: 2px;
+            vertical-align: middle; animation: blink 0.8s infinite;
+        }
+
+        /* ==========================================
+           4. LIQUID GLASS 3D BUTTONS
+           ========================================== */
+        .links-list {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .glass-btn {
+            width: 100%;
+            background: var(--glass-white);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            padding: 16px 22px;
+            margin-bottom: 14px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            color: #fff;
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.3),
+                inset 0 1px 1px rgba(255,255,255,0.1),
+                inset 0 -2px 5px rgba(0,0,0,0.5);
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-btn.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 18px 40px rgba(45, 109, 246, 0.25),
+                inset 0 1px 2px rgba(255,255,255,0.2);
+        }
+
+        .glass-btn:active {
+            transform: scale(0.96);
+        }
+
+        .glass-btn i, .glass-btn svg {
+            font-size: 19px;
+            width: 35px;
+            height: 19px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            filter: drop-shadow(0 0 6px currentColor);
+        }
+
+        .btn-text {
+            flex: 1;
+            text-align: center;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 1.2px;
+            margin-right: 35px;
+            opacity: 0.95;
+            text-transform: uppercase;
+        }
+
+        /* Custom Colors Icon Glowing */
+        .c-cert i { color: #FFD700; }
+        .c-siakad i { color: #00d2ff; }
+        .c-phone i { color: #25D366; }
+        .c-ig1 i { color: #E1306C; }
+        .c-ig2 i { color: #F56040; }
+        .c-tiktok i { color: #00F2FE; }
+        .c-discord i { color: #5865F2; }
+        .c-threads i, .c-threads svg { color: #FFFFFF; fill: #FFFFFF; }
+
+        /* Label Pemisah Kategori */
+        .section-label {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.4);
+            margin: 20px 0 14px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .section-label::before, .section-label::after {
+            content: ""; height: 1px; flex: 1; background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: absolute; border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0); animation: rippleAnim 0.6s linear;
+            pointer-events: none;
+        }
+
+        /* ==========================================
+           5. FOOTER
+           ========================================== */
+        footer {
+            margin-top: 35px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            padding-bottom: 20px;
+        }
+
+        /* ==========================================
+           6. ANIMATIONS KEYFRAMES
+           ========================================== */
+        @keyframes pulseGlow {
+            0% { transform: scale(0.9); opacity: 0.3; }
+            100% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        @keyframes rippleAnim {
+            to { transform: scale(4); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MOBILE CONTAINER VIEWPORT -->
+    <div class="app-viewport">
+
+        <!-- LIQUID BACKGROUND BLOBS -->
+        <div class="liquid-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- HEADER SECTION -->
+            <div class="header-section">
+                <div class="profile-container">
+                    <div class="profile-glow"></div>
+                    <img src="https://res.cloudinary.com/dr3evkwcu/image/upload/v1784776375/FOTO_KAMIL_KEREN_wjbwg8.jpg" alt="M. Awaluddin Kamil" class="profile-avatar" />
+                    <div class="badge-verified">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+
+                <h1 class="title-glow">SEMPURNAIN AJA</h1>
+
+                <div class="welcome-card">
+                    <div class="welcome-text">
+                        <span id="typed-text"></span><span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 1: KARYA & PORTFOLIO WEB -->
+            <div class="section-label">KARYA & PROJECT SAYA</div>
+
+            <main class="links-list">
+                <!-- 1. Sempurnain Sertifikat -->
+                <a href="https://sempurnain.github.io/sempurnainsertifikat/" target="_blank" rel="noopener noreferrer" class="glass-btn c-cert">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span class="btn-text">SEMPURNAIN SERTIFIKAT</span>
+                </a>
+
+                <!-- 2. SIAKAD Parenting -->
+                <a href="https://siakadparenting.great-site.net/" target="_blank" rel="noopener noreferrer" class="glass-btn c-siakad">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span class="btn-text">SIAKAD PARENTING</span>
+                </a>
+            </main>
+
+            <!-- SECTION 2: MEDIA SOSIAL & KONTAK -->
+            <div class="section-label">MEDIA SOSIAL & KONTAK</div>
+
+            <main class="links-list">
+
+                <!-- 1. WhatsApp / Phone -->
+                <a href="tel:082332920552" class="glass-btn c-phone">
+                    <i class="fa-solid fa-phone"></i>
+                    <span class="btn-text">KONTAK SAYA</span>
+                </a>
+
+                <!-- 2. Instagram Utama -->
+                <a href="https://instagram.com/sempurnain_aja" target="_blank" rel="noopener noreferrer" class="glass-btn c-ig1">
+                    <i class="fab fa-instagram"></i>
+                    <span class="btn-text">INSTAGRAM UTAMA</span>
+                </a>
+
+                <!-- 3. Instagram Kedua -->
+                <a href="https://instagram.com/sempurnain_ajaa" target="_blank" rel="noopener noreferrer" class="glass-btn c-ig2">
+                    <i class="fab fa-instagram"></i>
+                    <span class="btn-text">INSTAGRAM KEDUA</span>
+                </a>
+
+                <!-- 4. TikTok -->
+                <a href="https://tiktok.com/@sempurnain_aja" target="_blank" rel="noopener noreferrer" class="glass-btn c-tiktok">
+                    <i class="fab fa-tiktok"></i>
+                    <span class="btn-text">TIKTOK</span>
+                </a>
+
+                <!-- 5. Discord -->
+                <a href="#" class="glass-btn c-discord">
+                    <i class="fab fa-discord"></i>
+                    <span class="btn-text">DISCORD</span>
+                </a>
+
+                <!-- 6. Threads (Icon SVG Presisi) -->
+                <a href="https://threads.net/@sempurnain_aja" target="_blank" rel="noopener noreferrer" class="glass-btn c-threads">
+                    <i class="fa-brands fa-threads"></i>
+                    <span class="btn-text">THREADS</span>
+                </a>
+
+            </main>
+
+            <!-- FOOTER -->
+            <footer>
+                © Landing page sempurnain. All rights reserved.
+            </footer>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            /* Typing Effect Subtitle */
+            const textToType = "Selamat datang di portofolio & link resmi saya 👋\nJelajahi karya web atau hubungi saya di bawah ini.";
+            const typedTextElement = document.getElementById("typed-text");
+            let index = 0;
+
+            function typeWriter() {
+                if (index < textToType.length) {
+                    const char = textToType.charAt(index);
+                    if (char === '\n') {
+                        typedTextElement.innerHTML += '<br/>';
+                    } else {
+                        typedTextElement.innerHTML += char;
+                    }
+                    index++;
+                    setTimeout(typeWriter, 28);
+                }
+            }
+            setTimeout(typeWriter, 300);
+
+            /* Staggered Entrance Animasi Tombol Glass */
+            const glassBtns = document.querySelectorAll('.glass-btn');
+            glassBtns.forEach((btn, i) => {
+                setTimeout(() => {
+                    btn.classList.add('show');
+                }, 300 + (i * 80));
+            });
+
+            /* Ripple Effect saat Tombol Ditekan */
+            glassBtns.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ripple');
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+
+                    this.appendChild(ripple);
+
+                    setTimeout(() => { ripple.remove(); }, 600);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
